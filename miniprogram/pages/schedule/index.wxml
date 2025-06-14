@@ -1,0 +1,93 @@
+<view class="container">
+  <!-- 顶部信息栏 -->
+  <view class="header">
+    <text class="class-info">{{className}}，{{termName}}</text>
+    <view class="header-icons">
+      <image class="icon" src="/images/icons/refresh.png" bindtap="refreshSchedule"></image>
+      <image class="icon" src="/images/icons/watch.png" bindtap="showTimeTable"></image>
+    </view>
+  </view>
+
+  <!-- 周次选择器 -->
+  <view class="week-selector">
+    <text class="week-text">第{{currentWeek}}周</text>
+  </view>
+
+  <!-- 日期表头 -->
+  <scroll-view class="date-header" scroll-x="{{false}}">
+    <view class="weekday-row">
+      <view class="weekday-cell first-cell">
+        <text>第{{currentWeek}}周</text>
+      </view>
+      <view class="weekday-cell" wx:for="{{weekdays}}" wx:key="index">
+        <text class="weekday">{{item}}</text>
+        <text class="date">{{dates[index]}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 课程表主体 -->
+  <scroll-view class="schedule-body" scroll-y enable-back-to-top>
+    <view class="schedule-content">
+      <!-- 时间列 -->
+      <view class="time-column">
+        <view class="time-cell" wx:for="{{timeSlots}}" wx:key="index">
+          <text class="section-number">{{item.number}}</text>
+          <text class="time-range">{{item.time}}</text>
+        </view>
+      </view>
+
+      <!-- 课程网格 -->
+      <view class="course-grid">
+        <view class="course-row" wx:for="{{timeSlots}}" wx:key="index" wx:for-index="rowIndex">
+          <view class="course-cell {{course.type || ''}}" 
+                wx:for="{{courseMatrix[rowIndex]}}" 
+                wx:key="dayIndex" 
+                wx:for-item="course" 
+                wx:for-index="dayIndex"
+                bindtap="{{course ? 'showCourseDetail' : ''}}"
+                data-course="{{course}}">
+            <block wx:if="{{course}}">
+              <view class="course-content">
+                <text class="course-name">{{course.name}}</text>
+                <text class="course-location">{{course.location}}</text>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 课程详情弹窗 -->
+  <view class="modal" wx:if="{{selectedCourse}}" bindtap="hideCourseDetail">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">课程详情</text>
+        <text class="close-btn" bindtap="hideCourseDetail">×</text>
+      </view>
+      <view class="modal-body">
+        <view class="detail-item">
+          <text class="label">课程名称：</text>
+          <text class="value">{{selectedCourse.name}}</text>
+        </view>
+        <view class="detail-item">
+          <text class="label">上课时间：</text>
+          <text class="value">{{selectedCourse.time}}</text>
+        </view>
+        <view class="detail-item">
+          <text class="label">上课地点：</text>
+          <text class="value">{{selectedCourse.location}}</text>
+        </view>
+        <view class="detail-item">
+          <text class="label">任课教师：</text>
+          <text class="value">{{selectedCourse.teacher}}</text>
+        </view>
+        <view class="detail-item">
+          <text class="label">所属班级：</text>
+          <text class="value">{{selectedCourse.className}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

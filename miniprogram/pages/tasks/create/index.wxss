@@ -1,0 +1,106 @@
+.container {
+  min-height: 100vh;
+  background-color: #f6f6f6;
+  padding: 32rpx;
+}
+
+.form-group {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.form-item {
+  margin-bottom: 24rpx;
+}
+
+.form-item:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 12rpx;
+}
+
+.input {
+  width: 100%;
+  height: 88rpx;
+  background: #f8f8f8;
+  border-radius: 12rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.textarea {
+  width: 100%;
+  height: 200rpx;
+  background: #f8f8f8;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  font-size: 28rpx;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.datetime-picker {
+  display: flex;
+  gap: 16rpx;
+}
+
+.datetime-picker picker {
+  flex: 1;
+}
+
+.picker {
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #f8f8f8;
+  border-radius: 12rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.picker.placeholder {
+  color: #999;
+}
+
+.submit-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #4A90E2;
+  color: #fff;
+  font-size: 32rpx;
+  border-radius: 44rpx;
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 4rpx 12rpx rgba(74, 144, 226, 0.2);
+  transition: all 0.3s ease;
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 6rpx rgba(74, 144, 226, 0.1);
+}
+
+.submit-btn[disabled] {
+  background: #ccc !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* 占位符样式 */
+.input::placeholder,
+.textarea::placeholder {
+  color: #999;
+} 

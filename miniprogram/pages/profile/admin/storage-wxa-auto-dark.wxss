@@ -1,0 +1,46 @@
+/* 
+此文件为开发者工具生成，生成时间: 2024/12/9下午8:28:16
+使用方法：
+在 storage.wxss 文件末尾引入样式
+```
+@import "./storage-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .title {
+        color: rgb(209, 209, 209);
+    }
+
+    .result-title {
+        color: rgb(209, 209, 209);
+    }
+
+    .result-list {
+        background: rgb(17, 17, 17);
+    }
+
+    .result-item {
+        border-bottom: rgb(0, 0, 0);
+    }
+
+    .result-item.success {
+        background-color: rgb(14, 22, 3);
+    }
+
+    .result-item.error {
+        background-color: rgb(31, 22, 21);
+    }
+
+    .directory {
+        color: rgb(149, 149, 149);
+    }
+
+    .status {
+        color: rgb(99, 99, 99);
+    }
+
+    .error-msg {
+        color: rgb(238, 20, 40);
+    }
+}

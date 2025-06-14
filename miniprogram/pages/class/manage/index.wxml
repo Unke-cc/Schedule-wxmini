@@ -1,0 +1,64 @@
+<view class="container">
+  <!-- 教师端：我创建的班级 -->
+  <block wx:if="{{isTeacher}}">
+    <view class="section">
+      <view class="section-header">
+        <text class="section-title">我创建的班级</text>
+        <view class="header-right">
+          <button class="create-btn" bindtap="createClass">创建班级</button>
+        </view>
+      </view>
+      
+      <view class="class-list">
+        <view class="empty-tip" wx:if="{{createdClasses.length === 0}}">
+          <image class="empty-icon" src="/images/icons/empty.png"></image>
+          <text>还没有创建班级</text>
+        </view>
+        <view class="class-item" wx:for="{{createdClasses}}" wx:key="_id" bindtap="goToClassDetail" data-id="{{item._id}}">
+          <view class="class-info">
+            <text class="class-name">{{item.name}}</text>
+            <text class="class-code">班级码：{{item.code}}</text>
+          </view>
+          <view class="class-stats">
+            <text class="student-count">{{item.studentCount}}名学生</text>
+            <text class="task-count">{{item.taskCount}}个任务</text>
+          </view>
+          <text class="arrow">></text>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 学生端：我加入的班级 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">{{isTeacher ? '我管理的班级' : '我加入的班级'}}</text>
+      <view class="header-right" wx:if="{{!isTeacher}}">
+        <button class="join-btn" bindtap="joinClass">加入班级</button>
+      </view>
+    </view>
+    
+    <view class="class-list">
+      <view class="empty-tip" wx:if="{{joinedClasses.length === 0}}">
+        <image class="empty-icon" src="/images/icons/empty.png"></image>
+        <text>{{isTeacher ? '还没有管理的班级' : '还没有加入班级'}}</text>
+      </view>
+      <view class="class-item" wx:for="{{joinedClasses}}" wx:key="_id" bindtap="goToClassDetail" data-id="{{item._id}}">
+        <view class="class-info">
+          <text class="class-name">{{item.name}}</text>
+          <text class="teacher-name">{{item.teacherName}}老师</text>
+        </view>
+        <view class="class-stats">
+          <text class="task-count">{{item.taskCount}}个任务</text>
+          <text class="completion-rate">完成率{{item.completionRate}}%</text>
+        </view>
+        <text class="arrow">></text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="floating-button" wx:if="{{isTeacher}}" bindtap="createClass">
+    <image class="add-icon" src="/images/icons/add.png"></image>
+  </view>
+</view> 

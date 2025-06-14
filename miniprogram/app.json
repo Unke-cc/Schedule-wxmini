@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/profile/index",
+    "pages/class/index",
+    "pages/class/edit/index",
+    "pages/class/detail/index",
+    "pages/tasks/index",
+    "pages/tasks/detail/index",
+    "pages/schedule/index",
+    "pages/profile/admin/storage"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#4A90E2",
+    "navigationBarTitleText": "课程打卡",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#4A90E2",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/icons/home.png",
+        "selectedIconPath": "images/icons/home-active.png"
+      },
+      {
+        "pagePath": "pages/tasks/index",
+        "text": "任务",
+        "iconPath": "images/icons/task.png",
+        "selectedIconPath": "images/icons/task-active.png"
+      },
+      {
+        "pagePath": "pages/schedule/index",
+        "text": "课表",
+        "iconPath": "images/icons/class.png",
+        "selectedIconPath": "images/icons/class-active.png"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的",
+        "iconPath": "images/icons/user.png",
+        "selectedIconPath": "images/icons/user-active.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "skeleton": "/components/skeleton/skeleton"
+  },
+  "sitemapLocation": "sitemap.json"
+}

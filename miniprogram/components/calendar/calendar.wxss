@@ -1,0 +1,105 @@
+.calendar {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.header {
+  margin-bottom: 24rpx;
+}
+
+.month-selector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32rpx;
+}
+
+.btn {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f6f6f6;
+  border-radius: 32rpx;
+}
+
+.icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.current-month {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.weekdays {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16rpx;
+}
+
+.weekday {
+  flex: 1;
+  text-align: center;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8rpx;
+}
+
+.day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  position: relative;
+}
+
+.day-content {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 32rpx;
+  position: relative;
+}
+
+.current {
+  color: #333;
+}
+
+.other {
+  color: #ccc;
+}
+
+.today .day-content {
+  background: #4A90E2;
+  color: #fff;
+}
+
+.selected .day-content {
+  background: #e6f3ff;
+  color: #4A90E2;
+}
+
+.task-dot {
+  position: absolute;
+  bottom: 6rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  background: #4A90E2;
+} 

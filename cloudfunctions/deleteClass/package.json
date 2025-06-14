@@ -1,0 +1,9 @@
+{
+  "name": "deleteClass",
+  "version": "1.0.0",
+  "description": "Delete class and update related data",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "latest"
+  }
+} 

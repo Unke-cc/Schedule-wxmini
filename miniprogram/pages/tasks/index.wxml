@@ -1,0 +1,102 @@
+<view class="container">
+  <!-- 页面头部 -->
+  <view class="header">
+    <view class="title-section">
+      <text class="page-title">任务管理</text>
+      <text class="subtitle">{{tasks.length}}个任务</text>
+    </view>
+    <view class="search-bar">
+      <image class="search-icon" src="/images/icons/search.png" mode="aspectFit"></image>
+      <input type="text" placeholder="搜索任务" bindinput="onSearch" />
+    </view>
+  </view>
+
+  <!-- 任务筛选器 -->
+  <view class="filter-section">
+    <scroll-view scroll-x class="filter-tabs" enhanced show-scrollbar="{{false}}">
+      <view class="tab {{currentTab === 'all' ? 'active' : ''}}" 
+            bindtap="switchTab" 
+            data-tab="all">
+        <text>全部</text>
+      </view>
+      <view class="tab {{currentTab === 'today' ? 'active' : ''}}" 
+            bindtap="switchTab" 
+            data-tab="today">
+        <text>今日</text>
+      </view>
+      <view class="tab {{currentTab === 'upcoming' ? 'active' : ''}}" 
+            bindtap="switchTab" 
+            data-tab="upcoming">
+        <text>待完成</text>
+      </view>
+      <view class="tab {{currentTab === 'completed' ? 'active' : ''}}" 
+            bindtap="switchTab" 
+            data-tab="completed">
+        <text>已完成</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 任务列表 -->
+  <scroll-view class="task-list" scroll-y enable-back-to-top bindscrolltolower="loadMore">
+    <view class="task-item {{item.statusClass}}" 
+          wx:for="{{tasks}}" 
+          wx:key="_id" 
+          bindtap="goToTaskDetail" 
+          data-taskid="{{item._id}}">
+      <view class="task-status-indicator"></view>
+      <view class="task-content">
+        <view class="task-main">
+          <text class="task-title">{{item.title}}</text>
+          <text class="task-status">{{item.statusText}}</text>
+        </view>
+        <view class="task-info">
+          <view class="info-item">
+            <image class="icon" src="/images/icons/time.png" mode="aspectFit"></image>
+            <text>{{item.startTimeStr}} - {{item.endTimeStr}}</text>
+          </view>
+          <view class="info-item" wx:if="{{item.location}}">
+            <image class="icon" src="/images/icons/location.png" mode="aspectFit"></image>
+            <text>{{item.location}}</text>
+          </view>
+          <view class="info-item">
+            <image class="icon" src="/images/icons/class.png" mode="aspectFit"></image>
+            <text>{{item.className}}</text>
+          </view>
+        </view>
+        <view class="task-progress" wx:if="{{isTeacher}}">
+          <view class="progress-bar">
+            <view class="progress-fill" style="width: {{item.statistics.completionRate}}%"></view>
+          </view>
+          <text class="progress-text">完成率 {{item.statistics.completionRate}}%</text>
+        </view>
+      </view>
+      <view class="task-action" wx:if="{{!isTeacher && item.statusClass === 'ongoing'}}">
+        <button class="check-btn" 
+                catchtap="quickCheckIn" 
+                data-taskid="{{item._id}}">
+          打卡
+        </button>
+      </view>
+    </view>
+
+    <!-- 加载状态 -->
+    <view class="loading-more" wx:if="{{hasMore}}">
+      <view class="loading-spinner"></view>
+      <text>加载中...</text>
+    </view>
+    <view class="no-more" wx:if="{{!hasMore && tasks.length > 0}}">
+      <text>没有更多任务了</text>
+    </view>
+    <view class="empty-state" wx:if="{{tasks.length === 0}}">
+      <image src="/images/icons/empty.png" mode="aspectFit"></image>
+      <text class="empty-text">暂无任务</text>
+      <text class="empty-subtext">{{currentTab === 'completed' ? '还没有完成的任务' : '开始创建新任务吧'}}</text>
+    </view>
+  </scroll-view>
+
+  <!-- 创建任务按钮（仅教师可见） -->
+  <view class="fab-button {{isTeacher ? '' : 'hidden'}}" bindtap="createTask">
+    <text class="plus">+</text>
+  </view>
+</view>

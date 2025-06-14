@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="header">
+    <text class="title">云存储管理</text>
+  </view>
+
+  <view class="section">
+    <button 
+      class="init-btn {{isInitializing ? 'loading' : ''}}"
+      type="primary" 
+      bindtap="initializeStorage"
+      disabled="{{isInitializing}}"
+    >
+      {{isInitializing ? '初始化中...' : '初始化存储目录'}}
+    </button>
+  </view>
+
+  <view class="section" wx:if="{{initResult}}">
+    <view class="result-title">初始化结果：</view>
+    <view class="result-list">
+      <view 
+        class="result-item {{item.status === 'success' ? 'success' : 'error'}}"
+        wx:for="{{initResult}}"
+        wx:key="directory"
+      >
+        <text class="directory">{{item.directory}}</text>
+        <text class="status">{{item.status === 'success' ? '成功' : '失败'}}</text>
+        <text class="error-msg" wx:if="{{item.error}}">{{item.error}}</text>
+      </view>
+    </view>
+  </view>
+</view> 

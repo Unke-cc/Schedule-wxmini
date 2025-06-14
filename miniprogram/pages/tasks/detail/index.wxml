@@ -1,0 +1,126 @@
+<view class="container">
+  <!-- 任务基本信息卡片 -->
+  <view class="info-card">
+    <view class="header">
+      <view class="main-info">
+        <text class="task-name">{{taskInfo.title}}</text>
+        <text class="class-name">{{taskInfo.className}}</text>
+        <text class="teacher-name">{{taskInfo.teacherName}}老师</text>
+      </view>
+      <view class="status {{taskInfo.status}}">
+        <text>{{taskInfo.statusText}}</text>
+      </view>
+    </view>
+
+    <view class="info-list">
+      <view class="info-item">
+        <text class="label">开始时间</text>
+        <text class="value">{{taskInfo.startTime}}</text>
+      </view>
+      <view class="info-item">
+        <text class="label">结束时间</text>
+        <text class="value">{{taskInfo.endTime}}</text>
+      </view>
+      <view class="info-item" wx:if="{{taskInfo.location.required}}">
+        <text class="label">打卡位置</text>
+        <text class="value">{{taskInfo.location.address}}</text>
+      </view>
+      <view class="info-item">
+        <text class="label">任务说明</text>
+        <text class="value description">{{taskInfo.description || '无'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 打卡统计 -->
+  <view class="stats-card" wx:if="{{isTeacher}}">
+    <view class="stats-header">
+      <text class="title">打卡统计</text>
+      <text class="subtitle">{{taskInfo.completedCount}}/{{taskInfo.totalCount}}人已完成</text>
+    </view>
+    <view class="progress-bar">
+      <view class="progress" style="width: {{taskInfo.completionRate}}%"></view>
+    </view>
+    <view class="stats-info">
+      <view class="stat-item">
+        <text class="value">{{taskInfo.completionRate}}%</text>
+        <text class="label">完成率</text>
+      </view>
+      <view class="stat-item">
+        <text class="value">{{taskInfo.onTimeCount}}</text>
+        <text class="label">按时完成</text>
+      </view>
+      <view class="stat-item">
+        <text class="value">{{taskInfo.lateCount}}</text>
+        <text class="label">迟到</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 打卡记录 -->
+  <view class="records-card">
+    <view class="card-header">
+      <text class="title">{{isTeacher ? '学生打卡记录' : '我的打卡记录'}}</text>
+      <view class="header-right" wx:if="{{isTeacher}}">
+        <text class="export-btn" bindtap="exportRecords">导出</text>
+      </view>
+    </view>
+
+    <view class="record-list">
+      <view class="record-item" wx:for="{{records}}" wx:key="_id">
+        <view class="user-info">
+          <image class="avatar" src="{{item.avatarUrl || '/images/default-avatar.png'}}"></image>
+          <view class="info">
+            <text class="name">{{item.name}}</text>
+            <text class="time">{{item.checkTime}}</text>
+          </view>
+        </view>
+        <view class="check-status {{item.status}}">
+          <text>{{item.statusText}}</text>
+        </view>
+      </view>
+      <view class="empty-tip" wx:if="{{records.length === 0}}">
+        <text>暂无打卡记录</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar" wx:if="{{!isTeacher && taskInfo.status === 'ongoing'}}">
+    <button class="check-btn {{checkBtnDisabled ? 'disabled' : ''}}" 
+            bindtap="checkIn" 
+            disabled="{{checkBtnDisabled}}">
+      {{checkBtnText}}
+    </button>
+  </view>
+
+  <!-- 位置选择弹窗 -->
+  <view class="modal" wx:if="{{showLocationModal}}" bindtap="hideLocationModal">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">选择打卡位置</text>
+        <text class="close-btn" bindtap="hideLocationModal">×</text>
+      </view>
+      <view class="modal-body">
+        <map id="locationMap"
+             class="location-map"
+             latitude="{{currentLocation.latitude}}"
+             longitude="{{currentLocation.longitude}}"
+             markers="{{locationMarkers}}"
+             scale="16"
+             show-location></map>
+        <view class="location-info">
+          <text class="address">{{currentLocation.address}}</text>
+          <text class="distance" wx:if="{{currentLocation.distance}}">
+            距离打卡点{{currentLocation.distance}}米
+          </text>
+        </view>
+        <button class="confirm-btn" 
+                bindtap="confirmLocation"
+                disabled="{{!isValidLocation}}">
+          {{isValidLocation ? '确认打卡' : '不在打卡范围内'}}
+        </button>
+      </view>
+    </view>
+  </view>
+</view>

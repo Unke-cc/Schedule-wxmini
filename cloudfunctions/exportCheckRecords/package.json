@@ -1,0 +1,15 @@
+{
+  "name": "exportCheckRecords",
+  "version": "1.0.0",
+  "description": "Export check records to Excel file",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "wx-server-sdk": "latest",
+    "node-xlsx": "^0.21.0"
+  }
+} 

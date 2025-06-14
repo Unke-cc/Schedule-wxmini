@@ -1,0 +1,38 @@
+<view class="container">
+  <view class="form">
+    <view class="form-group">
+      <text class="label">用户名</text>
+      <input class="input" type="text" placeholder="请输入用户名" value="{{username}}" bindinput="onUsernameInput" />
+    </view>
+
+    <view class="form-group">
+      <text class="label">密码</text>
+      <input class="input" type="password" placeholder="请输入密码" value="{{password}}" bindinput="onPasswordInput" />
+    </view>
+
+    <view class="form-group">
+      <text class="label">确认密码</text>
+      <input class="input" type="password" placeholder="请再次输入密码" value="{{confirmPassword}}" bindinput="onConfirmPasswordInput" />
+    </view>
+
+    <view class="form-group">
+      <text class="label">姓名</text>
+      <input class="input" type="text" placeholder="请输入姓名" value="{{name}}" bindinput="onNameInput" />
+    </view>
+
+    <view class="form-group">
+      <text class="label">角色</text>
+      <radio-group class="radio-group" bindchange="onRoleChange">
+        <label class="radio" wx:for="{{roles}}" wx:key="value">
+          <radio value="{{item.value}}" checked="{{role === item.value}}" />
+          <text>{{item.name}}</text>
+        </label>
+      </radio-group>
+    </view>
+
+    <view class="button-group">
+      <button class="btn btn-primary" bindtap="onRegister" loading="{{loading}}">注册</button>
+      <button class="btn btn-default" bindtap="onBack">返回登录</button>
+    </view>
+  </view>
+</view>

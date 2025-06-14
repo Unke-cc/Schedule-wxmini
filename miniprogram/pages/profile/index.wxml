@@ -1,0 +1,66 @@
+<view class="container">
+  <view class="user-info">
+    <image class="avatar" src="{{userInfo.avatar || '/images/icons/user.png'}}" mode="aspectFill"></image>
+    <view class="info">
+      <text class="name">{{userInfo.name}}</text>
+      <text class="role">{{userInfo.role === 'teacher' ? '教师' : '学生'}}</text>
+    </view>
+  </view>
+
+  <view class="stats-card">
+    <view class="stat-item">
+      <text class="number">{{statistics.totalTasks || 0}}</text>
+      <text class="label">总任务数</text>
+    </view>
+    <view class="stat-item">
+      <text class="number">{{statistics.completedTasks || 0}}</text>
+      <text class="label">已完成</text>
+    </view>
+    <view class="stat-item">
+      <text class="number">{{statistics.completionRate || 0}}%</text>
+      <text class="label">完成率</text>
+    </view>
+  </view>
+
+  <view class="menu-list">
+    <view class="menu-item" bindtap="navigateToSettings">
+      <image class="menu-icon" src="/images/icons/settings.png"></image>
+      <text class="menu-text">设置</text>
+      <text class="arrow">></text>
+    </view>
+    
+    <!-- 管理员菜单，仅对管理员显示 -->
+    <block wx:if="{{isAdmin}}">
+      <view class="menu-section">
+        <text class="section-title">管理功能</text>
+      </view>
+      <view class="menu-item" bindtap="navigateToStorageManage">
+        <image class="menu-icon" src="/images/icons/statistics.png"></image>
+        <text class="menu-text">存储管理</text>
+        <text class="arrow">></text>
+      </view>
+    </block>
+
+    <view class="menu-item" bindtap="showAbout">
+      <image class="menu-icon" src="/images/icons/about.png"></image>
+      <text class="menu-text">关于</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+
+  <view class="logout-btn" bindtap="handleLogout">
+    <text>退出登录</text>
+  </view>
+
+  <!-- 关于弹窗 -->
+  <view class="modal" wx:if="{{showAboutModal}}">
+    <view class="modal-content">
+      <view class="modal-title">关于课程打卡</view>
+      <view class="modal-text">
+        <text>版本：1.0.0</text>
+        <text>课程打卡是一款帮助师生管理课程、任务和考勤的小程序。</text>
+      </view>
+      <button class="modal-btn" bindtap="hideAbout">确定</button>
+    </view>
+  </view>
+</view>

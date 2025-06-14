@@ -1,0 +1,121 @@
+<view class="container">
+  <form bindsubmit="handleSubmit">
+    <!-- 基本信息 -->
+    <view class="form-group">
+      <view class="form-item">
+        <text class="label">班级名称</text>
+        <input class="input" name="name" placeholder="请输入班级名称" value="{{formData.name}}" />
+      </view>
+      <view class="form-item">
+        <text class="label">班级简介</text>
+        <textarea class="textarea" name="description" placeholder="请输入班级简介" value="{{formData.description}}"></textarea>
+      </view>
+    </view>
+
+    <!-- 学期信息 -->
+    <view class="form-group">
+      <view class="form-item">
+        <text class="label">学年</text>
+        <picker mode="selector" range="{{years}}" value="{{yearIndex}}" bindchange="onYearChange">
+          <view class="picker">{{years[yearIndex]}}</view>
+        </picker>
+      </view>
+      <view class="form-item">
+        <text class="label">学期</text>
+        <picker mode="selector" range="{{terms}}" value="{{termIndex}}" bindchange="onTermChange">
+          <view class="picker">{{terms[termIndex]}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <!-- 课程信息 -->
+    <view class="form-group">
+      <view class="form-item">
+        <text class="label">课程名称</text>
+        <input class="input" name="courseName" placeholder="请输入课程名称" value="{{formData.courseName}}" />
+      </view>
+      <view class="form-item">
+        <text class="label">课程代码</text>
+        <input class="input" name="courseCode" placeholder="请输入课程代码（选填）" value="{{formData.courseCode}}" />
+      </view>
+    </view>
+
+    <!-- 上课时间 -->
+    <view class="form-group">
+      <view class="section-header">
+        <text class="section-title">上课时间</text>
+        <view class="header-right">
+          <text class="add-time" bindtap="addClassTime">添加</text>
+        </view>
+      </view>
+      
+      <view class="time-list">
+        <view class="empty-tip" wx:if="{{formData.classTimes.length === 0}}">
+          <text>请添加上课时间</text>
+        </view>
+        <view class="time-item" wx:for="{{formData.classTimes}}" wx:key="index">
+          <view class="time-info">
+            <text class="weekday">周{{item.weekday}}</text>
+            <text class="time">{{item.startTime}} - {{item.endTime}}</text>
+            <text class="location">{{item.location}}</text>
+          </view>
+          <view class="delete-btn" catchtap="deleteClassTime" data-index="{{index}}">
+            <text>×</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 其他设置 -->
+    <view class="form-group">
+      <view class="form-item">
+        <text class="label">允许学生加入</text>
+        <switch checked="{{formData.allowJoin}}" bindchange="onAllowJoinChange" />
+      </view>
+      <view class="form-item">
+        <text class="label">需要审核</text>
+        <switch checked="{{formData.requireApproval}}" bindchange="onRequireApprovalChange" />
+      </view>
+    </view>
+
+    <!-- 提交按钮 -->
+    <view class="form-group">
+      <button class="submit-btn" form-type="submit" type="primary">创建班级</button>
+    </view>
+  </form>
+
+  <!-- 添加上课时间弹窗 -->
+  <view class="modal" wx:if="{{showTimeModal}}" bindtap="hideTimeModal">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">添加上课时间</text>
+        <text class="close-btn" bindtap="hideTimeModal">×</text>
+      </view>
+      <view class="modal-body">
+        <view class="modal-form-item">
+          <text class="label">星期</text>
+          <picker mode="selector" range="{{weekdays}}" value="{{tempTime.weekdayIndex}}" bindchange="onWeekdayChange">
+            <view class="picker">{{weekdays[tempTime.weekdayIndex]}}</view>
+          </picker>
+        </view>
+        <view class="modal-form-item">
+          <text class="label">开始时间</text>
+          <picker mode="time" value="{{tempTime.startTime}}" bindchange="onModalStartTimeChange">
+            <view class="picker">{{tempTime.startTime || '请选择'}}</view>
+          </picker>
+        </view>
+        <view class="modal-form-item">
+          <text class="label">结束时间</text>
+          <picker mode="time" value="{{tempTime.endTime}}" bindchange="onModalEndTimeChange">
+            <view class="picker">{{tempTime.endTime || '请选择'}}</view>
+          </picker>
+        </view>
+        <view class="modal-form-item">
+          <text class="label">上课地点</text>
+          <input class="input" placeholder="请输入上课地点" value="{{tempTime.location}}" bindinput="onLocationInput" />
+        </view>
+        <button class="confirm-btn" bindtap="confirmAddTime">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

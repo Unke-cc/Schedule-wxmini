@@ -1,0 +1,9 @@
+{
+  "name": "getCheckRecords",
+  "version": "1.0.0",
+  "description": "Get check records cloud function",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+} 

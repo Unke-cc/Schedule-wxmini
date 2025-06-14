@@ -1,0 +1,384 @@
+.container {
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 30rpx;
+}
+
+/* 任务信息卡片 */
+.info-card {
+  background-color: #222;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30rpx;
+}
+
+.main-info {
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.task-name {
+  font-size: 36rpx;
+  font-weight: 500;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.class-name {
+  font-size: 28rpx;
+  color: #888;
+  margin-bottom: 6rpx;
+  display: block;
+}
+
+.teacher-name {
+  font-size: 24rpx;
+  color: #666;
+  display: block;
+}
+
+.status {
+  padding: 8rpx 20rpx;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+}
+
+.status.pending {
+  background-color: #333;
+  color: #888;
+}
+
+.status.ongoing {
+  background-color: #2b85e422;
+  color: #2b85e4;
+}
+
+.status.completed {
+  background-color: #52c41a22;
+  color: #52c41a;
+}
+
+.status.expired {
+  background-color: #ff4d4f22;
+  color: #ff4d4f;
+}
+
+.info-list {
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 20rpx;
+  background-color: #333;
+  margin-bottom: 2rpx;
+}
+
+.info-item:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  width: 140rpx;
+  font-size: 28rpx;
+  color: #888;
+  flex-shrink: 0;
+}
+
+.value {
+  flex: 1;
+  font-size: 28rpx;
+  word-break: break-all;
+}
+
+.value.description {
+  white-space: pre-wrap;
+}
+
+/* 统计卡片 */
+.stats-card {
+  background-color: #222;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.stats-header .title {
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.stats-header .subtitle {
+  font-size: 24rpx;
+  color: #888;
+}
+
+.progress-bar {
+  height: 8rpx;
+  background-color: #333;
+  border-radius: 4rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: #2b85e4;
+  border-radius: 4rpx;
+  transition: width 0.3s ease;
+}
+
+.stats-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+}
+
+.stat-item .value {
+  font-size: 36rpx;
+  font-weight: 500;
+  margin-bottom: 6rpx;
+}
+
+.stat-item .label {
+  font-size: 24rpx;
+  color: #888;
+  width: auto;
+}
+
+/* 打卡记录卡片 */
+.records-card {
+  background-color: #222;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.card-header .title {
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.export-btn {
+  font-size: 28rpx;
+  color: #2b85e4;
+}
+
+.record-list {
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+
+.record-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  background-color: #333;
+  margin-bottom: 2rpx;
+}
+
+.record-item:last-child {
+  margin-bottom: 0;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.info {
+  flex: 1;
+}
+
+.name {
+  font-size: 28rpx;
+  margin-bottom: 6rpx;
+  display: block;
+}
+
+.time {
+  font-size: 24rpx;
+  color: #888;
+}
+
+.check-status {
+  padding: 6rpx 16rpx;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+}
+
+.check-status.normal {
+  background-color: #52c41a22;
+  color: #52c41a;
+}
+
+.check-status.late {
+  background-color: #ff4d4f22;
+  color: #ff4d4f;
+}
+
+.check-status.early {
+  background-color: #faad1422;
+  color: #faad14;
+}
+
+.empty-tip {
+  text-align: center;
+  padding: 60rpx 0;
+  color: #666;
+  font-size: 28rpx;
+}
+
+/* 底部操作栏 */
+.bottom-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20rpx 30rpx;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+  background-color: #1a1a1a;
+  border-top: 2rpx solid #333;
+}
+
+.check-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background-color: #2b85e4;
+  color: #fff;
+  font-size: 32rpx;
+  border-radius: 44rpx;
+}
+
+.check-btn.disabled {
+  background-color: #333;
+  color: #666;
+}
+
+/* 位置选择弹窗 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  width: 90%;
+  max-width: 600rpx;
+  background-color: #222;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #333;
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.close-btn {
+  font-size: 40rpx;
+  color: #888;
+  padding: 0 20rpx;
+}
+
+.modal-body {
+  padding: 30rpx;
+}
+
+.location-map {
+  width: 100%;
+  height: 400rpx;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.location-info {
+  background-color: #333;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.address {
+  font-size: 28rpx;
+  margin-bottom: 6rpx;
+  display: block;
+}
+
+.distance {
+  font-size: 24rpx;
+  color: #888;
+}
+
+.confirm-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background-color: #2b85e4;
+  color: #fff;
+  font-size: 32rpx;
+  border-radius: 44rpx;
+}
+
+.confirm-btn[disabled] {
+  background-color: #333;
+  color: #666;
+}
+
+.confirm-btn:active {
+  opacity: 0.8;
+}

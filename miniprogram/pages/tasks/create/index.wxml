@@ -1,0 +1,100 @@
+<!-- 任务创建页面 -->
+<view class="container">
+  <view class="form-group">
+    <view class="form-item">
+      <text class="label">任务标题</text>
+      <input 
+        class="input" 
+        placeholder="请输入任务标题" 
+        value="{{formData.title}}"
+        bindinput="onTitleInput"
+      />
+    </view>
+
+    <view class="form-item">
+      <text class="label">班级选择</text>
+      <picker 
+        mode="selector" 
+        range="{{classes}}" 
+        range-key="name"
+        bindchange="onClassChange"
+      >
+        <view class="picker {{selectedClass ? '' : 'placeholder'}}">
+          {{selectedClass ? selectedClass.name : '请选择班级'}}
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <text class="label">任务描述</text>
+      <textarea 
+        class="textarea" 
+        placeholder="请输入任务描述" 
+        value="{{formData.description}}"
+        bindinput="onDescriptionInput"
+      />
+    </view>
+  </view>
+
+  <view class="form-group">
+    <view class="form-item">
+      <text class="label">开始时间</text>
+      <view class="datetime-picker">
+        <picker 
+          mode="date" 
+          value="{{formData.startDate}}" 
+          bindchange="onStartDateChange"
+        >
+          <view class="picker">{{formData.startDate || '选择日期'}}</view>
+        </picker>
+        <picker 
+          mode="time" 
+          value="{{formData.startTime}}" 
+          bindchange="onStartTimeChange"
+        >
+          <view class="picker">{{formData.startTime || '选择时间'}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="label">结束时间</text>
+      <view class="datetime-picker">
+        <picker 
+          mode="date" 
+          value="{{formData.endDate}}" 
+          bindchange="onEndDateChange"
+        >
+          <view class="picker">{{formData.endDate || '选择日期'}}</view>
+        </picker>
+        <picker 
+          mode="time" 
+          value="{{formData.endTime}}" 
+          bindchange="onEndTimeChange"
+        >
+          <view class="picker">{{formData.endTime || '选择时间'}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <view class="form-group">
+    <view class="form-item">
+      <text class="label">地点</text>
+      <input 
+        class="input" 
+        placeholder="请输入任务地点（选填）" 
+        value="{{formData.location}}"
+        bindinput="onLocationInput"
+      />
+    </view>
+  </view>
+
+  <view class="form-group">
+    <button 
+      class="submit-btn" 
+      bindtap="handleSubmit"
+      disabled="{{submitting}}"
+    >创建任务</button>
+  </view>
+</view> 

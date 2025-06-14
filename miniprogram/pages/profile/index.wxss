@@ -1,0 +1,176 @@
+.container {
+  min-height: 100vh;
+  background-color: #f6f6f6;
+  padding: 32rpx;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  padding: 32rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  margin-bottom: 32rpx;
+}
+
+.avatar {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+  margin-right: 32rpx;
+}
+
+.info {
+  flex: 1;
+}
+
+.name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.role {
+  font-size: 28rpx;
+  color: #666;
+  background: #f0f0f0;
+  padding: 4rpx 16rpx;
+  border-radius: 24rpx;
+}
+
+.stats-card {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  padding: 32rpx;
+  border-radius: 16rpx;
+  margin-bottom: 32rpx;
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+}
+
+.number {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #4A90E2;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.label {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.menu-list {
+  background: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+  margin-bottom: 32rpx;
+}
+
+.menu-section {
+  padding: 24rpx 32rpx 16rpx;
+  background: #f8f8f8;
+}
+
+.section-title {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 32rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 24rpx;
+}
+
+.menu-text {
+  flex: 1;
+  font-size: 32rpx;
+  color: #333;
+}
+
+.arrow {
+  font-size: 32rpx;
+  color: #999;
+}
+
+.logout-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  background: #fff;
+  border-radius: 16rpx;
+  color: #ff4d4f;
+  font-size: 32rpx;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  width: 560rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 48rpx 32rpx;
+}
+
+.modal-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 32rpx;
+}
+
+.modal-text {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.modal-text text {
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.modal-btn {
+  margin-top: 32rpx;
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #4A90E2;
+  color: #fff;
+  border-radius: 44rpx;
+  font-size: 32rpx;
+}

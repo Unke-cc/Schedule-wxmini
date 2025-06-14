@@ -1,0 +1,7 @@
+<view 
+  class="skeleton {{type}} {{animationClass}}" 
+  style="width: {{width}}; height: {{height}}; background-color: {{backgroundColor}};"
+  wx:if="{{loading}}"
+>
+</view>
+<slot wx:if="{{!loading}}"></slot> 

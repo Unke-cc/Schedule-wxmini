@@ -1,0 +1,9 @@
+{
+  "name": "rejectMember",
+  "version": "1.0.0",
+  "description": "Reject class member application",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "latest"
+  }
+} 

@@ -1,0 +1,236 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color:#ffffff;
+  color:  #1a1a1a;
+}
+
+/* 顶部信息栏 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 30rpx;
+}
+
+.class-info {
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.header-icons {
+  display: flex;
+  gap: 20rpx;
+}
+
+.header-icons .icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 周次选择器 */
+.week-selector {
+  padding: 20rpx 30rpx;
+}
+
+.week-text {
+  font-size: 28rpx;
+  color: #888;
+}
+
+/* 日期表头 */
+.date-header {
+  border-bottom: 1rpx solid #333;
+}
+
+.weekday-row {
+  display: flex;
+  width: 100%;
+  background-color: #222;
+}
+
+.weekday-cell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10rpx 0;
+  min-width: 90rpx;
+}
+
+.first-cell {
+  min-width: 60rpx;
+  color: #888;
+  font-size: 24rpx;
+}
+
+.weekday {
+  font-size: 26rpx;
+  margin-bottom: 4rpx;
+}
+
+.date {
+  font-size: 24rpx;
+  color: #888;
+}
+
+/* 课程表主体 */
+.schedule-body {
+  flex: 1;
+  width: 100%;
+}
+
+.schedule-content {
+  display: flex;
+  min-height: 100%;
+}
+
+/* 时间列 */
+.time-column {
+  width: 60rpx;
+  flex-shrink: 0;
+  background-color: #222;
+}
+
+.time-cell {
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1rpx solid #333;
+}
+
+.section-number {
+  font-size: 24rpx;
+  color: #888;
+  margin-bottom: 4rpx;
+}
+
+.time-range {
+  font-size: 20rpx;
+  color: #666;
+  text-align: center;
+  white-space: pre-line;
+}
+
+/* 课程网格 */
+.course-grid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.course-row {
+  display: flex;
+  height: 120rpx;
+  border-bottom: 1rpx solid #333;
+}
+
+.course-cell {
+  flex: 1;
+  min-width: 90rpx;
+  border-left: 1rpx solid #333;
+  padding: 4rpx;
+}
+
+.course-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #2b85e4;
+  border-radius: 8rpx;
+  padding: 4rpx;
+}
+
+.course-name {
+  font-size: 24rpx;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 2rpx;
+}
+
+.course-location {
+  font-size: 20rpx;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+
+/* 课程类型样式 */
+.course-content.lab {
+  background-color: #19be6b;
+}
+
+.course-content.lecture {
+  background-color: #ff9900;
+}
+
+.course-content.tutorial {
+  background-color: #e066ff;
+}
+
+/* 弹窗样式 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  width: 80%;
+  background-color: #222;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #333;
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.close-btn {
+  font-size: 40rpx;
+  color: #888;
+  padding: 0 20rpx;
+}
+
+.modal-body {
+  padding: 30rpx;
+}
+
+.detail-item {
+  margin-bottom: 20rpx;
+}
+
+.detail-item:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  font-size: 28rpx;
+  color: #888;
+  margin-right: 20rpx;
+}
+
+.value {
+  font-size: 28rpx;
+}

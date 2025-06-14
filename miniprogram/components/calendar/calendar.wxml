@@ -1,0 +1,31 @@
+<view class="calendar">
+  <view class="header">
+    <view class="month-selector">
+      <view class="btn" bindtap="changeMonth" data-type="prev">
+        <image class="icon" src="/images/icons/left.png" mode="aspectFit"></image>
+      </view>
+      <view class="current-month">{{year}}年{{month}}月</view>
+      <view class="btn" bindtap="changeMonth" data-type="next">
+        <image class="icon" src="/images/icons/right.png" mode="aspectFit"></image>
+      </view>
+    </view>
+    <view class="weekdays">
+      <view class="weekday" wx:for="{{weekDays}}" wx:key="*this">{{item}}</view>
+    </view>
+  </view>
+
+  <view class="days">
+    <view 
+      class="day {{item.isCurrentMonth ? 'current' : 'other'}} {{item.isToday ? 'today' : ''}} {{selectedDate === item.date ? 'selected' : ''}}"
+      wx:for="{{days}}" 
+      wx:key="date"
+      bindtap="selectDate"
+      data-date="{{item.date}}"
+    >
+      <view class="day-content">
+        <text>{{item.day}}</text>
+        <view class="task-dot" wx:if="{{item.hasTasks}}"></view>
+      </view>
+    </view>
+  </view>
+</view> 

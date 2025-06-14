@@ -1,0 +1,76 @@
+.container {
+  padding: 32rpx;
+}
+
+.header {
+  margin-bottom: 48rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.section {
+  margin-bottom: 32rpx;
+}
+
+.init-btn {
+  width: 100%;
+}
+
+.init-btn.loading {
+  opacity: 0.7;
+}
+
+.result-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 24rpx;
+  color: #333;
+}
+
+.result-list {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 16rpx;
+}
+
+.result-item {
+  padding: 24rpx;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.result-item:last-child {
+  border-bottom: none;
+}
+
+.result-item.success {
+  background-color: #f6ffed;
+}
+
+.result-item.error {
+  background-color: #fff2f0;
+}
+
+.directory {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.status {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.error-msg {
+  font-size: 24rpx;
+  color: #f5222d;
+  margin-top: 8rpx;
+}
+
+@import 'storage-wxa-auto-dark.wxss' 

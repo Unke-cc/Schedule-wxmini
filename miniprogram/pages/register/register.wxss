@@ -1,0 +1,119 @@
+.container {
+  min-height: 100vh;
+  padding: 40rpx;
+  background-color: #f5f6fa;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #2b85e4;
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.form {
+  background-color: #fff;
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.section {
+  padding: 30rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.form-item {
+  margin-bottom: 20rpx;
+}
+
+.form-item:last-child {
+  margin-bottom: 0;
+}
+
+.input {
+  width: 100%;
+  height: 88rpx;
+  padding: 0 30rpx;
+  border: 2rpx solid #dcdee2;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  color: #333;
+  background-color: #fff;
+}
+
+.input:focus {
+  border-color: #2b85e4;
+}
+
+.role-group {
+  display: flex;
+  justify-content: center;
+  gap: 60rpx;
+}
+
+.role-item {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.role-item text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.button-group {
+  padding: 30rpx;
+}
+
+.register-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background-color: #2b85e4;
+  color: #fff;
+  font-size: 32rpx;
+  border-radius: 8rpx;
+  margin-bottom: 20rpx;
+}
+
+.register-btn::after {
+  border: none;
+}
+
+.back-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background-color: #fff;
+  color: #666;
+  font-size: 32rpx;
+  border-radius: 8rpx;
+  border: 2rpx solid #dcdee2;
+}
+
+.back-btn::after {
+  border: none;
+}

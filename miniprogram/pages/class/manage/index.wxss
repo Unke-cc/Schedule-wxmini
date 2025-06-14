@@ -1,0 +1,147 @@
+.container {
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 30rpx;
+}
+
+/* 区块样式 */
+.section {
+  margin-bottom: 40rpx;
+  background-color: #222;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #333;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+/* 按钮样式 */
+.create-btn, .join-btn {
+  font-size: 28rpx;
+  padding: 10rpx 30rpx;
+  border-radius: 30rpx;
+  background-color: #2b85e4;
+  color: #fff;
+  border: none;
+  line-height: 1.5;
+}
+
+.create-btn {
+  background-color: #2b85e4;
+}
+
+.join-btn {
+  background-color: #19be6b;
+}
+
+/* 班级列表样式 */
+.class-list {
+  padding: 20rpx 0;
+}
+
+.class-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  margin: 0 20rpx;
+  background-color: #333;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.class-item:last-child {
+  margin-bottom: 0;
+}
+
+.class-info {
+  flex: 1;
+}
+
+.class-name {
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.class-code, .teacher-name {
+  font-size: 24rpx;
+  color: #888;
+  display: block;
+}
+
+.class-stats {
+  text-align: right;
+  margin-right: 20rpx;
+}
+
+.student-count, .task-count, .completion-rate {
+  font-size: 24rpx;
+  color: #888;
+  display: block;
+  margin-bottom: 4rpx;
+}
+
+.arrow {
+  color: #666;
+  font-size: 32rpx;
+}
+
+/* 空状态提示 */
+.empty-tip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60rpx 0;
+  color: #666;
+}
+
+.empty-icon {
+  width: 128rpx;
+  height: 128rpx;
+  margin-bottom: 20rpx;
+}
+
+/* 悬浮按钮 */
+.floating-button {
+  position: fixed;
+  right: 40rpx;
+  bottom: 40rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background-color: #2b85e4;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4rpx 12rpx rgba(43, 133, 228, 0.4);
+}
+
+.add-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 按钮点击效果 */
+.create-btn:active,
+.join-btn:active,
+.floating-button:active {
+  opacity: 0.8;
+}
+
+/* 下拉刷新样式 */
+page {
+  background-color: #1a1a1a;
+} 

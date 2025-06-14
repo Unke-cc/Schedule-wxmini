@@ -1,0 +1,199 @@
+<view class="container">
+  <!-- 班级基本信息卡片 -->
+  <view class="info-card">
+    <view class="header">
+      <view class="main-info">
+        <text class="class-name">{{classInfo.name}}</text>
+        <text class="course-name">{{classInfo.courseName}}</text>
+        <text class="term">{{classInfo.year}} {{classInfo.term}}</text>
+      </view>
+      <view class="actions" wx:if="{{isTeacher}}">
+        <view class="action-btn" bindtap="editClass">
+          <image class="icon" src="/images/icons/edit.png"></image>
+          <text>编辑</text>
+        </view>
+        <view class="action-btn delete" bindtap="showDeleteConfirm">
+          <image class="icon" src="/images/icons/delete.png"></image>
+          <text>删除</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="info-list">
+      <view class="info-item">
+        <text class="label">班级码</text>
+        <text class="value code" bindtap="copyClassCode">{{classInfo.code}}</text>
+        <view class="copy-btn" bindtap="copyClassCode">复制</view>
+      </view>
+      <view class="info-item">
+        <text class="label">创建人</text>
+        <text class="value">{{classInfo.teacherName}}老师</text>
+      </view>
+      <view class="info-item">
+        <text class="label">创建时间</text>
+        <text class="value">{{classInfo.createTime}}</text>
+      </view>
+      <view class="info-item">
+        <text class="label">成员数量</text>
+        <text class="value">{{classInfo.memberCount}}人</text>
+      </view>
+      <view class="info-item" wx:if="{{classInfo.description}}">
+        <text class="label">班级简介</text>
+        <text class="value description">{{classInfo.description}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 班级公告 -->
+  <view class="notice-card" wx:if="{{classInfo.notice || isTeacher}}">
+    <view class="card-header">
+      <text class="title">班级公告</text>
+      <view class="header-right" wx:if="{{isTeacher}}">
+        <text class="edit-btn" bindtap="editNotice">{{classInfo.notice ? '编辑' : '添加'}}</text>
+      </view>
+    </view>
+    <view class="notice-content" wx:if="{{classInfo.notice}}">
+      <text>{{classInfo.notice}}</text>
+      <text class="notice-time">{{classInfo.noticeTime}}</text>
+    </view>
+    <view class="empty-notice" wx:else>
+      <text>暂无公告</text>
+    </view>
+  </view>
+
+  <!-- 课程表 -->
+  <view class="schedule-card">
+    <view class="card-header">
+      <text class="title">课程安排</text>
+      <view class="header-right" wx:if="{{isTeacher}}">
+        <text class="edit-btn" bindtap="editSchedule">编辑</text>
+      </view>
+    </view>
+    <view class="schedule-list">
+      <view class="schedule-item" wx:for="{{classInfo.schedule}}" wx:key="index">
+        <view class="time-info">
+          <text class="weekday">{{item.weekday}}</text>
+          <text class="time">{{item.startTime}}-{{item.endTime}}</text>
+        </view>
+        <view class="location-info">
+          <image class="icon" src="/images/icons/location.png"></image>
+          <text>{{item.location}}</text>
+        </view>
+      </view>
+      <view class="empty-schedule" wx:if="{{!classInfo.schedule || classInfo.schedule.length === 0}}">
+        <text>暂无课程安排</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 成员管理 -->
+  <view class="members-card">
+    <view class="card-header">
+      <text class="title">班级成员</text>
+      <view class="header-right">
+        <text class="count">{{classInfo.memberCount}}人</text>
+        <text class="manage-btn" wx:if="{{isTeacher}}" bindtap="manageMembers">管理</text>
+      </view>
+    </view>
+
+    <!-- 待审核成员 -->
+    <view class="pending-section" wx:if="{{isTeacher && pendingMembers.length > 0}}">
+      <view class="section-header">
+        <text class="title">待审核 ({{pendingMembers.length}})</text>
+      </view>
+      <view class="member-list">
+        <view class="member-item" wx:for="{{pendingMembers}}" wx:key="_id">
+          <view class="member-info">
+            <image class="avatar" src="{{item.avatarUrl || '/images/default-avatar.png'}}"></image>
+            <view class="info">
+              <text class="name">{{item.name}}</text>
+              <text class="apply-time">{{item.applyTime}} 申请加入</text>
+            </view>
+          </view>
+          <view class="member-actions">
+            <button class="action-btn reject" bindtap="rejectMember" data-id="{{item._id}}">拒绝</button>
+            <button class="action-btn approve" bindtap="approveMember" data-id="{{item._id}}">通过</button>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 成员列表 -->
+    <view class="member-list">
+      <view class="member-item" wx:for="{{members}}" wx:key="_id">
+        <view class="member-info">
+          <image class="avatar" src="{{item.avatarUrl || '/images/default-avatar.png'}}"></image>
+          <view class="info">
+            <text class="name">{{item.name}}</text>
+            <text class="join-time">{{item.joinTime}} 加入</text>
+          </view>
+        </view>
+        <view class="member-actions" wx:if="{{isTeacher && item._id !== classInfo.teacherId}}">
+          <button class="action-btn remove" bindtap="showRemoveConfirm" data-id="{{item._id}}">移除</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 删除确认弹窗 -->
+  <view class="modal" wx:if="{{showDeleteModal}}" bindtap="hideDeleteModal">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">删除班级</text>
+      </view>
+      <view class="modal-body">
+        <text class="warning-text">确定要删除该班级吗？删除后无法恢复，所有成员将被移出班级，相关任务将被取消。</text>
+      </view>
+      <view class="modal-footer">
+        <button class="btn cancel" bindtap="hideDeleteModal">取消</button>
+        <button class="btn confirm" bindtap="deleteClass">确定删除</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 移除成员确认弹窗 -->
+  <view class="modal" wx:if="{{showRemoveModal}}" bindtap="hideRemoveModal">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">移除成员</text>
+      </view>
+      <view class="modal-body">
+        <text class="warning-text">确定要移除该成员吗？</text>
+        <view class="input-group">
+          <text class="label">移除原因（选填）</text>
+          <textarea class="reason-input" 
+                   placeholder="请输入移除原因" 
+                   value="{{removeReason}}"
+                   bindinput="onReasonInput"
+                   maxlength="100"
+                   auto-height></textarea>
+        </view>
+      </view>
+      <view class="modal-footer">
+        <button class="btn cancel" bindtap="hideRemoveModal">取消</button>
+        <button class="btn confirm" bindtap="removeMember">确定移除</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 编辑公告弹窗 -->
+  <view class="modal" wx:if="{{showNoticeModal}}" bindtap="hideNoticeModal">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">编辑公告</text>
+      </view>
+      <view class="modal-body">
+        <textarea class="notice-input" 
+                 placeholder="请输入班级公告" 
+                 value="{{editingNotice}}"
+                 bindinput="onNoticeInput"
+                 maxlength="500"
+                 auto-height></textarea>
+      </view>
+      <view class="modal-footer">
+        <button class="btn cancel" bindtap="hideNoticeModal">取消</button>
+        <button class="btn confirm" bindtap="saveNotice">保存</button>
+      </view>
+    </view>
+  </view>
+</view> 

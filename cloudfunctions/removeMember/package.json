@@ -1,0 +1,9 @@
+{
+  "name": "removeMember",
+  "version": "1.0.0",
+  "description": "Remove member from class",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "latest"
+  }
+} 

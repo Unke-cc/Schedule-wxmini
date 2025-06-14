@@ -1,0 +1,88 @@
+<view class="container">
+  <!-- 班级码输入区域 -->
+  <view class="form-group">
+    <view class="form-header">
+      <text class="title">加入班级</text>
+      <text class="subtitle">输入6位班级码加入班级</text>
+    </view>
+    
+    <!-- 班级码输入框 -->
+    <view class="code-input-wrapper">
+      <input class="code-input" 
+             type="text" 
+             maxlength="6" 
+             value="{{classCode}}"
+             bindinput="onCodeInput"
+             placeholder="请输入班级码"
+             placeholder-class="placeholder" />
+      <view class="scan-btn" bindtap="scanCode">
+        <image class="scan-icon" src="/images/icons/scan.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <!-- 申请记录 -->
+  <view class="form-group" wx:if="{{applications.length > 0}}">
+    <view class="form-header">
+      <text class="title">申请记录</text>
+    </view>
+    
+    <view class="application-list">
+      <view class="application-item" wx:for="{{applications}}" wx:key="_id">
+        <view class="application-info">
+          <text class="class-name">{{item.className}}</text>
+          <text class="teacher-name">{{item.teacherName}}老师</text>
+          <text class="apply-time">{{item.createTime}}</text>
+        </view>
+        <view class="application-status {{item.status}}">
+          <text wx:if="{{item.status === 'pending'}}">审核中</text>
+          <text wx:if="{{item.status === 'approved'}}">已通过</text>
+          <text wx:if="{{item.status === 'rejected'}}">已拒绝</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加入按钮 -->
+  <view class="btn-wrapper">
+    <button class="join-btn" 
+            bindtap="joinClass" 
+            disabled="{{!isValidCode || joining}}">
+      {{joining ? '加入中...' : '加入班级'}}
+    </button>
+  </view>
+
+  <!-- 班级信息弹窗 -->
+  <view class="modal" wx:if="{{showClassInfo}}" bindtap="hideClassInfo">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">班级信息</text>
+        <text class="close-btn" bindtap="hideClassInfo">×</text>
+      </view>
+      <view class="modal-body">
+        <view class="info-item">
+          <text class="label">班级名称</text>
+          <text class="value">{{classInfo.name}}</text>
+        </view>
+        <view class="info-item">
+          <text class="label">任课教师</text>
+          <text class="value">{{classInfo.teacherName}}</text>
+        </view>
+        <view class="info-item">
+          <text class="label">课程名称</text>
+          <text class="value">{{classInfo.courseName}}</text>
+        </view>
+        <view class="info-item">
+          <text class="label">学年学期</text>
+          <text class="value">{{classInfo.year}} {{classInfo.term}}</text>
+        </view>
+        <view class="info-item" wx:if="{{classInfo.description}}">
+          <text class="label">班级简介</text>
+          <text class="value description">{{classInfo.description}}</text>
+        </view>
+        
+        <button class="confirm-btn" bindtap="confirmJoin">确认加入</button>
+      </view>
+    </view>
+  </view>
+</view>
